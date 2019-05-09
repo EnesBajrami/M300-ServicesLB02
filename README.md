@@ -176,6 +176,14 @@ SECURITY WARNING: You are building a Docker image from Windows against a non-Win
 
 
 
+Sicherheit: 
+Für die Sicherheit habe ich zusätzlich ein anderen Port verändert und bei den Projekten mit Herr Steiger haben wir noch die Software kitmatic eingesetzt um die Logs zu überwachen. 
+
+
+
+
+
+
 ### 06.3 - Ausführen eines Containers mit persistenter Datenablage 
 
 Damit ich den Container nicht bei jeder Änderung im PHP-File stoppen und wieder starten muss, erzeuge ich beim starten des Containers eine persistente Datenablage und jede Änderung die ich am Host im PHP-File vornehme wird auch im Container vorgenommen.
@@ -192,16 +200,31 @@ Nun kann man in einem beliebigen Browser mit der Eingabe localhost das index.php
 
 
 
+### 06.4 - Projekte mit Herr Steiger 
+
+Anhand von einem Dockerfile wird ein Image für einen NGNIX Webserver configuriert. Im Webserver wird eine von mir erstellten Webvorlage zur verfügung gestellt.
+Anhand vom Befehl //Docker build --tag "conrad_webserver_1 " .// habe ich eine Image von meinem Webserver erstellt. Die Websitedateien werden im Ordner html gespeichert und danach in das Webserver reinkopiert
+
+Sobald die Image erstellt ist habe ich mit dem Befehl //docker run conrad_webserver_1// ein Container mit der vorherige erstellten Image kreiert.
+Mit der Software Kitematic konnte ich diesen Container beobachten und die verschiedene Ports definieren.
+Natürlich können diese Konfigurationen auch im Powershell gemacht werden.
+
+Für die Sicherheit vom bestehenden Container haben wir die Software Kitematic gebraucht um die logs zu beobachten. Der Container wird täglich überwacht und die verschiedene Ports sind minimal konfiguriert sodass keine sicherheitslücken entstehen.
+
+
+Projekt 2: 
+Ich habe mit Docker & Kitematic die Bloggingplatform "Ghost" aufgesetzt.
 
 
 
 ## 07 - Netzwerkplan Apache
+
 +---------------------------------------------------------------+
 ! Container-Engine: Docker                                      !	
 +---------------------------------------------------------------+
 ! Gast OS: Ubuntu 16.04                                         !	
 +---------------------------------------------------------------+
-! Hypervisor: VirtualBox                                        !	
+! Hypervisor: Hyper V Docker                                    !	
 +---------------------------------------------------------------+
 ! Host-OS: Windows 10                                           !	
 +---------------------------------------------------------------+
@@ -249,6 +272,9 @@ Das testing hat bei mir beides funktioniert alles ohne Komplikationen.
 Anfangs kam ich garnicht mit Docker draus und musste nur für die Installtino und Konfiguratin viel Zeit in anspruch nehmen. Nach den Ferien musste ich wieder das ganze wissen auffrischen und geriet in einer stresssituation. Diverses wollte nicht mehr funktionieren Docker hatte Störungen, virtuelle Maschinen konnten nicht gestartet werden musste alles wieder von neu installieren und Konfigurieren. Bei dem Problem mit der VM musste ich einfach in den Windows-Einstellungen den Dienst Hyper-V aktivieren, aus irgendeinen Grund war dieser bei mir deaktiviert. Docker funktionierte auch nach der Installation nicht und musste wieder dort viel Zeit aufwenden, dass es wieder in Betrieb ist. Beim Docker musste ich einfach bei den Einstellungen die shared drives aktivieren. Auch nachdem wollte docker immer noch nicht laufen es gab immer eine Fehlermeldung das der Docker Deamon, sprich der Dienst nicht läuft, auch dort musste ich wiederum viel Zeit investieren um diesen Fehler zu beheben, anschliessend habe ich einen Artikel gefudnen der sagt, dass man am besten diesen Befehel eingeben muss, damit der Deamon dienst läuft (docker-machine create box) so wird eine Box erstellt. Leider brachte auch hier wiederum ein neuen Fehler, dass hyper v check nicht funktioniert oder ich hyper-v ausschalten soll, doch wenn ich das täte würde docker garnicht funktionieren. Auch dafür habe ich ein Workaround gefunden mit diesem Befehl (--virtualbox-no-vtx-check). auch hier wiederum nur fehler anschliessend fand ich einen Eintrag, dass das ganze Admin rechte bräuchte und es schliesslich funktionierte, trotzdessen kam ich sehr im stress und konnte keine komplexere Themen erstellen, aber bin trotzdessen sehr zufrieden mit mir. 
 
 Ausserdem hatte ich noch schwierigkeiten mit Vagrant, bei einem beispiel von ihnen steht, dass auch mit vagrant und docker zusammen etwas zu erstellen, das ist jedoch leider nicht möglich da docker hyperv benötigt und virtual box geht nur wenn diese entfernt ist.
+
+
+Schlussendlich habe ich noch mit Herr Steiger diverse andere Projekte zusammen erstellt, als zusätzliche Übung. Da Herr Steiger mein Tandempartner war haben wir noch zusätzlich mehrere beispiel gemeinsam erarbeitet. 
 
 ## 09 - Vergleich Vorwissen/Wissenszuwachs
 
